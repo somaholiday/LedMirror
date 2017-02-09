@@ -1,0 +1,41 @@
+# pixel.rc for Gray Area NOW Hunters Point
+# 
+# Load this on to a USB stick, put it in the PixelPusher, and boot up.
+
+group=1
+controller=1
+
+# Without the entries below, defaults to DHCP
+
+# ether=10.2.0.14
+# netmask=255.255.255.0
+# gateway=10.2.0.1
+# port=1234
+
+stripsattached=8
+pixels=176
+
+start1=880000
+#order1=rgb
+strip1=lpd8806
+
+start2=008800
+strip2=lpd8806
+
+start3=000088
+strip3=lpd8806
+
+start4=880088
+strip4=lpd8806
+
+start5=880000
+strip5=lpd8806
+
+start6=008800
+strip6=lpd8806
+
+start7=000088
+strip7=lpd8806
+
+start8=880088
+strip8=lpd8806
