@@ -30,22 +30,25 @@ DeviceRegistry registry;
 TestObserver testObserver;
 
 void setup() {
-  size(480, 480, P2D);
+  size(320, 240, P2D);
 
   initPixelPusher();
   initVideo();
 
   // initialize scenes
   scenes = new Scene[] {
-    new Scene_Olin()
+    new Scene_OlinKahney(), 
+    new Scene_EliseXu(),
+    new Scene_SophieHuang()
   };
 
-  currentSceneIndex = 0;
+  currentSceneIndex = 1;
   currentScene = scenes[currentSceneIndex];
 
   frameRate(60);
 }
 
+/* Initializes PixelPusher Registry and Observer */
 void initPixelPusher() {
   registry = new DeviceRegistry();
   testObserver = new TestObserver();
@@ -54,6 +57,7 @@ void initPixelPusher() {
   registry.setAutoThrottle(true);
 }
 
+/* Uses gohai's GL Video library */
 void initGLVideo() {
   //String[] devices = GLCapture.list();
   //println("Devices:");
@@ -75,8 +79,9 @@ void initGLVideo() {
   //video.play();
 }
 
+/* Uses the built-in Processing video library */
 void initStandardVideo() {
-  video = new Capture(this, width, height);
+  video = new Capture(this, width, height, 30);
   video.start();
 }
 
@@ -99,6 +104,10 @@ void draw() {
   currentScene._draw();
 
   scrape();
+  
+  //if (frameCount % 300 == 0) {
+  //  changeScene(); 
+  //}
 }
 
 void flippedVideo() {
@@ -109,4 +118,15 @@ void flippedVideo() {
   // The x position is -width instead of 0 because we flipped over the x-axis
   image(video, -video.width, 0);
   popMatrix();
+}
+
+void changeScene() {
+  noTint();
+  
+  currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
+  currentScene = scenes[currentSceneIndex];
+}
+
+void keyPressed() {
+  changeScene();
 }

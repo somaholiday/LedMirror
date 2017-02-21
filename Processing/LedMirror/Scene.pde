@@ -1,3 +1,5 @@
+/* Wrapper class for each of the apprentices' scenes */
+
 abstract class Scene {
 
   public Scene() {

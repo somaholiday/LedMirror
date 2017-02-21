@@ -1,3 +1,5 @@
+/* Scrapes the screen and maps pixels to LEDs via PixelPusher */
+
 boolean first_scrape = true;
 
 void scrape() {

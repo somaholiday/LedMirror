@@ -1,4 +1,12 @@
-class Scene_Olin extends Scene {
+/*
+
+  Gray Area CCA 2016 - NOW Hunters Point
+  
+  Olin Kahney
+
+ */
+
+class Scene_OlinKahney extends Scene {
 
   // Previous Frame
   PImage prevFrame;
@@ -11,7 +19,7 @@ class Scene_Olin extends Scene {
 
   PVector particlePosition;
 
-  public Scene_Olin() {
+  public Scene_OlinKahney() {
     super();
   }
 
