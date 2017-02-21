@@ -50,7 +50,7 @@ class Scene_OlinKahney extends Scene {
     scale(-1, 1);
     //image(video, 0, 0);
     // The x position is -width instead of 0 because we flipped over the x-axis
-    image(video, -video.width, 0);
+    //image(video, -video.width, 0);
 
     particlePosition = getAverageMotion();
     particlePosition.x = particlePosition.x - width;
