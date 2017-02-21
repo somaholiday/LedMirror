@@ -14,12 +14,13 @@ import java.util.*;
 import processing.video.*;
 
 // number of LEDs per strip segment
-int STRIDE = 44;
+static final int STRIDE = 44;
+static final int FRAMES_PER_SCENE = 30 * 45;
+static final int FRAMES_PER_FADE = 30 * 6;
+static final int FRAMES_BETWEEN_FADES = 120;
 
 // SCENE STATE
-Scene[] scenes;
-int currentSceneIndex;
-Scene currentScene;
+SceneManager sceneManager;
 
 // VIDEO
 //GLCapture video;
@@ -36,14 +37,11 @@ void setup() {
   initVideo();
 
   // initialize scenes
-  scenes = new Scene[] {
+  sceneManager = new SceneManager(new Scene[] {
     new Scene_OlinKahney(), 
-    new Scene_EliseXu(),
+    new Scene_EliseXu(), 
     new Scene_SophieHuang()
-  };
-
-  currentSceneIndex = 1;
-  currentScene = scenes[currentSceneIndex];
+  });
 
   frameRate(60);
 }
@@ -101,10 +99,10 @@ void draw() {
 
   //image(video, 0, 0);
 
-  currentScene._draw();
+  sceneManager.getCurrentScene()._draw();
 
   scrape();
-  
+
   //if (frameCount % 300 == 0) {
   //  changeScene(); 
   //}
@@ -120,13 +118,6 @@ void flippedVideo() {
   popMatrix();
 }
 
-void changeScene() {
-  noTint();
-  
-  currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
-  currentScene = scenes[currentSceneIndex];
-}
-
 void keyPressed() {
-  changeScene();
+  sceneManager.nextScene();
 }
