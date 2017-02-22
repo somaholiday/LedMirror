@@ -15,9 +15,6 @@ import processing.video.*;
 
 // number of LEDs per strip segment
 static final int STRIDE = 44;
-static final int FRAMES_PER_SCENE = 30 * 45;
-static final int FRAMES_PER_FADE = 30 * 6;
-static final int FRAMES_BETWEEN_FADES = 120;
 
 // SCENE STATE
 SceneManager sceneManager;
@@ -41,7 +38,7 @@ void setup() {
     new Scene_OlinKahney(), 
     new Scene_EliseXu(), 
     new Scene_SophieHuang()
-  });
+    });
 
   frameRate(60);
 }
@@ -91,15 +88,7 @@ void initVideo() {
 void draw() {
   background(0);
 
-  //if (video.available()) {
-  //  video.read();
-  //}
-
-  //flippedVideo();
-
-  //image(video, 0, 0);
-
-  sceneManager.getCurrentScene()._draw();
+  sceneManager.update();
 
   scrape();
 
@@ -108,16 +97,13 @@ void draw() {
   //}
 }
 
-void flippedVideo() {
-  pushMatrix();
-  // Reverse the image (so it feels like a real mirror)
-  scale(-1, 1);
-
-  // The x position is -width instead of 0 because we flipped over the x-axis
-  image(video, -video.width, 0);
-  popMatrix();
-}
-
 void keyPressed() {
   sceneManager.nextScene();
+}
+
+void fadeRect(float opacity) {
+  pushStyle();
+  fill(0, opacity);
+  rect(-1, -1, width+1, height+1);
+  popStyle();
 }
