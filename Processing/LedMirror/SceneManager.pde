@@ -21,6 +21,7 @@ class SceneManager {
     noTint();
 
     currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
+    currentFrameCount = 0;
   }
 
   public void update() {
@@ -42,7 +43,6 @@ class SceneManager {
 
     if (currentFrameCount > FRAMES_PER_SCENE + FRAMES_BETWEEN_FADES) {
       nextScene();
-      currentFrameCount = 0;
     }
   }
 }
