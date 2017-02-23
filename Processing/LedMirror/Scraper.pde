@@ -23,10 +23,10 @@ void scrape() {
         int stride_number = stripx / STRIDE; 
         int xpos, ypos;
 
-        if ((stride_number & 1) == 0) { // we are going left to right
+        if ((stride_number & 1) != 0) { // we are going right to left
           xpos = xpixel * xscale; 
           ypos = ((stripy*strides_per_strip) + stride_number) * yscale;
-        } else { // we are going right to left
+        } else { // we are going left to right
           xpos = ((STRIDE - 1)-xpixel) * xscale;
           ypos = ((stripy*strides_per_strip) + stride_number) * yscale;
         }
