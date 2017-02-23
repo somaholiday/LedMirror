@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# Runs LedMirror Processing using processing-java
+# Runs LedMirror Processing sketch binary
+# (assumes binary has already been produced, using export.sh)
 #
 # Restarts process if it dies for any reason.
+
 
 PROCESSING_JAVA=/usr/local/bin/processing-java
 
@@ -14,10 +16,14 @@ SKETCH_NAME=LedMirror
 
 SKETCH_FULL=$SKETCH_DIR$SKETCH_NAME
 
-COMMAND="$PROCESSING_JAVA --sketch=$SKETCH_FULL --run"
+BIN_DIR=application.linux-armv6hf/
+
+BIN_FULL="${SKETCH_FULL}/$BIN_DIR$SKETCH_NAME"
+
+COMMAND=$BIN_FULL
 
 echo "Running LED Mirror from:"
-echo $SKETCH_FULL
+echo "${SKETCH_FULL}/$BIN_DIR"
 echo ""
 
 while true
@@ -49,7 +55,7 @@ echo ""
 echo "Restarting..."
 echo ""
 
-#killall processing-java
+killall java
 
 sleep 1
 
