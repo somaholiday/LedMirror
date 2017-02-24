@@ -36,6 +36,7 @@ void scrape() {
         //set(xpos, ypos, color(255));
         colorMode(HSB);
         strip.setPixel(c, stripx);
+        colorMode(RGB);
       }
       stripy++;
     }
