@@ -35,6 +35,7 @@ void setup() {
 
   // initialize scenes
   sceneManager = new SceneManager(new Scene[] {
+    new Scene_AmieBaumgartner(),
     new Scene_OlinKahney(), 
     new Scene_EliseXu(), 
     new Scene_SophieHuang()
